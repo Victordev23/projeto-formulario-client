@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+    margin: 20px 0;
+}
+
+form {
+    width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #0000001a;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button#enviar {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+input#cep{
+    width: 100px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+input#numero{
+
+    width: 175px;
+}
+
+p#pcep{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+input#bairro{
+    width: 190px;
+}
+
+p#pbairro{
+    display: inline-block;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+input#uf{
+    width: 60px;
+}
+
+p#puf{
+    display: inline-block;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+input#telefone{
+    width: 120px;
+}
+
+input#cidade{
+    width: 200px;
+}
+
+p#localidade{
+    display: inline-block;
+}
+
+p#complemento{
+    display: inline-block;
+}
+
+input#complemento{
+    width: 200px;
+}
+
+.form-row {
+    display: flex;
+    margin: 10px 0;
+}
+
+.form-group {
+    display: inline-block;
+    width: 48%; 
+    margin-right: 2%; 
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
