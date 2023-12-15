@@ -1,56 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Preencha os campos a seguir corretamente:</h1>
     <form method="get" action="" onsubmit="return validarForm()">
-        <p id="pnome">Nome completo:
-            <input type="text" name="nome" id="nome" required>
-        </p>
 
-        <p id="pcep">CEP:
-            <input type="text" name="cep" id="cep" required maxlength="9" minlength="8" onblur="pesquisaCep(this.value)" placeholder="XXXXX-XXX">
-        </p>
+        <div id="divNome">
+            <label for="nome">Nome completo:</label>
+            <div class="divError">Nome inválido</div>
+            <input type="text" name="nome" id="nome" class="required" oninput="validarNome()">
+        </div>
 
-        <p id="pbairro">Bairro:
-            <input type="text" name="bairro" id="bairro" required>
-        </p>
-
-        <p id="puf">UF:
-            <input type="text" name="uf" id="uf">
-        </p>
-
-        <p id="plogradouro">Logradouro:
-            <input type="text" name="logradouro" id="logradouro" required>
-        </p>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="cidade">Cidade:</label>
-                <input type="text" name="cidade" id="cidade" required>
-            </div>
-
-            <div class="form-group">
-                <label for="complemento">Complemento:</label>
-                <input type="text" name="complemento" id="complemento">
-            </div>
-            <div class="form-group">
-                <label for="numero">Número:</label> 
-                <input type="number" name="numero" id="numero" required>
-            </div>
+        <div id="Divgenero">
+            <label for="genero">Gênero:</label>
+            <select id="genero" name="genero">
+                <option value="cisgênero">Cisgênero</option>
+                <option value="transgênero">Transgênero</option>
+                <option value="nãoResponde">Prefiro não responder</option>
+            </select>
 
         </div>
+
+        <div id="divNascimento">
+            <label for="nascimento">Data de nascimento:</label>
+            <div class="divError">Digite uma data válida</div>
+            <input type="text" id="nascimento" name="nascimento" class="required">
+
+        </div>
+
+        <div id="divEmail">
+            <label for="email">Email:</label>
+            <div class="divError">Email inválido</div>
+            <input type="text" name="email" id="email" class="required" onkeyup="validarEmail()">
+        </div>
+
+        <div id="divCpf">
+            <label for="cpf">CPF/CNPJ</label>
+            <div class="divError">Documento inválido</div>
+            <input type="text" id="cpf" name="cpf">
+        </div>
+
+        <div id="divCep">
+            <label for="cep">CEP:</label>
+            <div class="divError">Cep Inválido</div>
+            <input type="text" name="cep" id="cep" maxlength="9" class="required" onkeyup="pesquisaCep(this.value)">
+        </div>
+
+        <div id="divBairro">
+            <label for="bairro">Bairro:</label>
+            <input type="text" name="bairro" id="bairro" class="required">
+            <div class="divError">ossis</div>
+        </div>
+
+        <div id="divCidade">
+            <label for="cidade">Cidade:</label>
+            <input type="text" name="cidade" id="cidade">
+            <div class="divError">ossis</div>
+        </div>
+
+        <div id="divUf">
+            <label for="uf">UF:</label>
+            <input type="text" name="uf" id="uf">
+            <div class="divError">ossis</div>
+        </div>
+
+        <div id="divComplemento">
+            <label for="complemento">Complemento:</label>
+            <input type="text" name="complemento" id="complemento">
+        </div>
+
+        <div id="divLogradouro">
+            <label for="logradouro">Logradouro:</label>
+            <input type="text" name="logradouro" id="logradouro">
+            <div class="divError">ossis</div>
+        </div>
+
+        <div id="divNumero">
+            <label for="numero">Número:</label>
+            <input type="number" name="numero" id="numero">
+            <div class="divError">ossis</div>
+        </div>
+
+        <div>
+            <label for="formFile" class="form-label">Enviar foto:</label>
+            <input class="form-control" type="file" id="formFile">
+            <div class="divError">ossis</div>
+            <img src="img/perfilPadrão.png" id="imgForm">
+        </div>
+
 
         <p id="penviar">
             <button id="enviar">Enviar</button>
         </p>
     </form>
-   
+
     <script src="script.js"></script>
 </body>
 </html>
-
