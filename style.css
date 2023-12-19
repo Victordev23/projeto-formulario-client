@@ -26,7 +26,7 @@ form {
 }
 
 input[type="text"],
-input[type="number"]{
+input[type="number"] {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -82,12 +82,12 @@ input#email {
     width: 300px;
 }
 
-div#divCpf{
-  display: inline-block;
-  margin-right: 10px;
+div#divDocumento {
+    display: inline-block;
+    margin-right: 10px;
 }
 
-input#cpf{
+input#documento {
     width: 200px;
 }
 
@@ -180,8 +180,14 @@ button#enviar {
     margin-top: 20px;
 }
 
-.divError{
-   color: #e63636;
-   display: none;
-   font-size: 15px;
+.divError {
+    color: #e63636;
+    display: none;
+    font-size: 15px;
+}
+
+#errorImg{
+    display: none;
+    color: #e63636;
+    margin-bottom: 10px;
 }
