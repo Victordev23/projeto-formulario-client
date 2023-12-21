@@ -74,6 +74,7 @@ function removeError(index) {
     campos[index].style.border = '';
     divError[index].style.display = 'none';
     errorOccurred = false;
+    
 }
 
 //validação nome
@@ -126,13 +127,23 @@ const dateInputMask = function dateInputMask(inputNascimento) {
 function inputSair() {
     const dataAtual = new Date();
     const anoAtual = dataAtual.getFullYear()
+    const diaAtual = dataAtual.getDate()
+    const mesAtual = dataAtual.getMonth()
 
     const input = document.getElementById('nascimento').value
 
     const data = input.split('/')
 
-    if (data[0] > 31 || data[1] > 12 || data[2] >= anoAtual || data[2] < 1907 || input == '' || input.length !== 10) {
+    if (data[0] > 31 || data[1] > 12 || data[2] > anoAtual || data[2] < 1907 || input.length !== 10) {
 
+        setError(1)
+
+        return false
+    } else if (data[2] == anoAtual && data[1] > mesAtual + 1) {
+        setError(1)
+
+        return false
+    } else if (data[2] == anoAtual && data[0] > diaAtual) {
         setError(1)
 
         return false
@@ -221,8 +232,8 @@ inputDoc.addEventListener("blur", () => {
 
             removeError(3)
 
-            const cpfMask = docFormatado.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
-            inputDoc.value = cpfMask;
+            const cpfMask = docFormatado.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4")
+            inputDoc.value = cpfMask
         } else {
             setError(3)
         }
@@ -256,6 +267,10 @@ inputDoc.addEventListener("blur", () => {
 
         if (digito1 == docFormatado[12] && digito2 == docFormatado[13]) {
             removeError(3)
+
+            const maskCnpj = docFormatado.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5")
+
+            inputDoc.value = maskCnpj
 
         } else {
             setError(3)
@@ -329,34 +344,6 @@ function validarNum() {
     }
 }
 
-function validarForm() {
-    const nome = document.getElementById('nome').value
-    const log = document.getElementById('logradouro').value
-    const bairro = document.getElementById('bairro').value
-    const cidade = document.getElementById('cidade').value
-    const uf = document.getElementById('uf').value
-    const nascimento = document.getElementById('nascimento').value
-    const email = document.getElementById('email').value
-    const documento = document.getElementById('documento').value
-    const cep = document.getElementById('cep').value
-    const numero = document.getElementById('numero').value
-    let imgFile = document.getElementById('errorImg')
-
-    if (nascimento == '') {
-        setError(1)
-        inputSair()
-
-
-        return false
-    }
-
-    else {
-        imgFile.style.display = 'none'
-
-        return true
-    }
-}
-
 form.addEventListener('submit', function (event) {
 
     const nome = document.getElementById('nome').value
@@ -370,49 +357,54 @@ form.addEventListener('submit', function (event) {
     const cep = document.getElementById('cep').value
     const numero = document.getElementById('numero').value
     let imgFile = document.getElementById('errorImg')
+    const btnEnviar = documento.getElementById('enviar')
 
-    if (nascimento == '' || errorOccurred) {
-
-        event.preventDefault()
-    } else if (nome == '' || errorOccurred) {
+    if (nome == '' || errorOccurred) {
         validarNome()
 
         event.preventDefault()
-    } else if (log == '' || errorOccurred){
+    } else if (nascimento == '' || errorOccurred) {
+        setError(1)
+
+        event.preventDefault()
+    } else if (log == '' || errorOccurred) {
         validarLog()
 
         event.preventDefault()
-    } else if(bairro == '' || errorOccurred){
+    } else if (bairro == '' || errorOccurred) {
         validarBairro()
-        
+
         event.preventDefault()
-    } else if(cidade == '' || errorOccurred){
+    } else if (cidade == '' || errorOccurred) {
         validarCidade()
 
         event.preventDefault()
-    } else if(uf == '' || errorOccurred){
+    } else if (uf == '' || errorOccurred) {
         validarUf()
 
         event.preventDefault()
-    } else if(email == '' || errorOccurred){
+    } else if (email == '' || errorOccurred) {
         validarEmail()
 
         event.preventDefault()
-    } else if (documento == '' || errorOccurred){
+    } else if (documento == '' || errorOccurred) {
         setError(3)
 
         event.preventDefault()
-    } else if(cep == '' || errorOccurred) {
+    } else if (cep == '' || errorOccurred) {
         setError(4)
 
         event.preventDefault()
-    } else if(numero == '' || errorOccurred){
+    } else if (numero == '' || errorOccurred) {
         validarNum()
 
         event.preventDefault()
-    }  else if (document.getElementById("formFile").files.length == 0) {
+    } else if (document.getElementById("formFile").files.length == 0) {
         imgFile.style.display = 'block'
 
         event.preventDefault()
+    } else {
+
+        btnEnviar.style.display = 'block';
     }
 });
