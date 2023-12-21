@@ -52,6 +52,12 @@ div#Divgenero {
     margin-top: 10px;
 }
 
+#errorGenero{
+    color: #e63636;
+    display: none;
+    font-size: 15px;
+}
+
 select#genero {
     width: 205px;
     display: block;

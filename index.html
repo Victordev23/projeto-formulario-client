@@ -22,7 +22,9 @@
 
         <div id="Divgenero">
             <label for="genero">Gênero:</label>
-            <select id="genero" name="genero">
+            <div id="errorGenero">Selecione uma opção</div>
+            <select id="genero" name="genero" onblur="validarGenero()">
+                <option value=""></option>
                 <option value="cisgênero">Cisgênero</option>
                 <option value="transgênero">Transgênero</option>
                 <option value="nãoResponde">Prefiro não responder</option>

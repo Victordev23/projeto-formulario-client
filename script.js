@@ -73,7 +73,7 @@ function removeError(index) {
     campos[index].style.border = '';
     divError[index].style.display = 'none';
     errorOccurred = false;
-    
+
 }
 
 //validação nome
@@ -87,6 +87,22 @@ function validarNome() {
 
     } else {
         removeError(0)
+    }
+}
+
+//validação genero
+function validarGenero() {
+    const genero = document.getElementById('genero').value
+    const errorGenero = document.getElementById('errorGenero')
+
+    if (genero == '' || genero == null) {
+        errorGenero.style.display = 'block'
+
+        return false
+    } else {
+        errorGenero.style.display = 'none'
+
+        return true
     }
 }
 
@@ -368,39 +384,39 @@ form.addEventListener('submit', function (event) {
         setError(1)
 
         event.preventDefault()
-    } else if (log == '' || errorOccurred){
+    } else if (log == '' || errorOccurred) {
         validarLog()
 
         event.preventDefault()
-    } else if(bairro == '' || errorOccurred){
+    } else if (bairro == '' || errorOccurred) {
         validarBairro()
-        
+
         event.preventDefault()
-    } else if(cidade == '' || errorOccurred){
+    } else if (cidade == '' || errorOccurred) {
         validarCidade()
 
         event.preventDefault()
-    } else if(uf == '' || errorOccurred){
+    } else if (uf == '' || errorOccurred) {
         validarUf()
 
         event.preventDefault()
-    } else if(email == '' || errorOccurred){
+    } else if (email == '' || errorOccurred) {
         validarEmail()
 
         event.preventDefault()
-    } else if (documento == '' || errorOccurred){
+    } else if (documento == '' || errorOccurred) {
         setError(3)
 
         event.preventDefault()
-    } else if(cep == '' || errorOccurred) {
+    } else if (cep == '' || errorOccurred) {
         setError(4)
 
         event.preventDefault()
-    } else if(numero == '' || errorOccurred){
+    } else if (numero == '' || errorOccurred) {
         validarNum()
 
         event.preventDefault()
-    }  else if (document.getElementById("formFile").files.length == 0) {
+    } else if (document.getElementById("formFile").files.length == 0) {
         imgFile.style.display = 'block'
 
         event.preventDefault()
