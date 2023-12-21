@@ -169,7 +169,7 @@ input#numero {
 }
 
 img#imgForm {
-    margin-top: 20px;
+    margin-top: 10px;
     height: 200px;
     width: 200px;
     object-fit: cover;
@@ -201,4 +201,12 @@ button#enviar {
     display: none;
     color: #e63636;
     margin-bottom: 10px;
+}
+
+#formFile{
+    display: none;   
+}
+
+#fotoEnviar{
+    margin-top: 10px;
 }

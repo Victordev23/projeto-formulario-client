@@ -60,7 +60,6 @@ input.addEventListener('change', () => {
 
 //validações
 
-const form = document.getElementById('form')
 const campos = document.querySelectorAll('.required')
 const divError = document.querySelectorAll('.divError')
 
@@ -344,6 +343,9 @@ function validarNum() {
     }
 }
 
+
+const form = document.getElementById('form')
+
 form.addEventListener('submit', function (event) {
 
     const nome = document.getElementById('nome').value
@@ -357,7 +359,6 @@ form.addEventListener('submit', function (event) {
     const cep = document.getElementById('cep').value
     const numero = document.getElementById('numero').value
     let imgFile = document.getElementById('errorImg')
-    const btnEnviar = documento.getElementById('enviar')
 
     if (nome == '' || errorOccurred) {
         validarNome()
@@ -367,44 +368,41 @@ form.addEventListener('submit', function (event) {
         setError(1)
 
         event.preventDefault()
-    } else if (log == '' || errorOccurred) {
+    } else if (log == '' || errorOccurred){
         validarLog()
 
         event.preventDefault()
-    } else if (bairro == '' || errorOccurred) {
+    } else if(bairro == '' || errorOccurred){
         validarBairro()
-
+        
         event.preventDefault()
-    } else if (cidade == '' || errorOccurred) {
+    } else if(cidade == '' || errorOccurred){
         validarCidade()
 
         event.preventDefault()
-    } else if (uf == '' || errorOccurred) {
+    } else if(uf == '' || errorOccurred){
         validarUf()
 
         event.preventDefault()
-    } else if (email == '' || errorOccurred) {
+    } else if(email == '' || errorOccurred){
         validarEmail()
 
         event.preventDefault()
-    } else if (documento == '' || errorOccurred) {
+    } else if (documento == '' || errorOccurred){
         setError(3)
 
         event.preventDefault()
-    } else if (cep == '' || errorOccurred) {
+    } else if(cep == '' || errorOccurred) {
         setError(4)
 
         event.preventDefault()
-    } else if (numero == '' || errorOccurred) {
+    } else if(numero == '' || errorOccurred){
         validarNum()
 
         event.preventDefault()
-    } else if (document.getElementById("formFile").files.length == 0) {
+    }  else if (document.getElementById("formFile").files.length == 0) {
         imgFile.style.display = 'block'
 
         event.preventDefault()
-    } else {
-
-        btnEnviar.style.display = 'block';
     }
 });

@@ -90,10 +90,12 @@
         </div>
 
         <div>
-            <label for="formFile" class="form-label">Enviar foto:</label>
+            <p id="fotoEnviar">Clique no avatar para enviar uma foto:</p>
+            <label for="formFile" class="form-label">
+                <img src="img/perfilPadrão.png" id="imgForm">
+            </label>
             <div id="errorImg">Envie uma foto*</div>
-            <input class="form-control" type="file" id="formFile" class="required">
-            <img src="img/perfilPadrão.png" id="imgForm">
+            <input class="form-control" type="file" id="formFile" class="required" accept="image/*">
         </div>
 
         <p id="penviar">
