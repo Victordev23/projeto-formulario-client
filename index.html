@@ -56,6 +56,23 @@
             <input type="text" name="cep" id="cep" maxlength="9" class="required" onblur="pesquisaCep(this.value)">
         </div>
 
+        <div id="divLogradouro">
+            <label for="logradouro">Logradouro:</label>
+            <div class="divError">Logradouro inválido</div>
+            <input type="text" name="logradouro" class="required" id="logradouro" onblur="validarLog()">
+        </div>
+
+        <div id="divNumero">
+            <label for="numero">Número:</label>
+            <div class="divError">Digite apenas números</div>
+            <input type="text" name="numero" class="required" id="numero" maxlength="6" onblur="validarNum()">
+        </div>
+
+        <div id="divComplemento">
+            <label for="complemento">Complemento:</label>
+            <input type="text" name="complemento" id="complemento">
+        </div>
+
         <div id="divBairro">
             <label for="bairro">Bairro:</label>
             <div class="divError">Bairro inválido</div>
@@ -72,23 +89,6 @@
             <label for="uf">UF:</label>
             <div class="divError">UF inválida</div>
             <input type="text" name="uf" id="uf" class="required" onblur="validarUf()" maxlength="2">
-        </div>
-
-        <div id="divComplemento">
-            <label for="complemento">Complemento:</label>
-            <input type="text" name="complemento" id="complemento">
-        </div>
-
-        <div id="divLogradouro">
-            <label for="logradouro">Logradouro:</label>
-            <div class="divError">Logradouro inválido</div>
-            <input type="text" name="logradouro" class="required" id="logradouro" onblur="validarLog()">
-        </div>
-
-        <div id="divNumero">
-            <label for="numero">Número:</label>
-            <div class="divError">Digite apenas números</div>
-            <input type="number" name="numero" class="required" id="numero" onblur="validarNum()">
         </div>
 
         <div>

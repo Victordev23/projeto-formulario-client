@@ -147,8 +147,8 @@ input#uf {
 
 div#divComplemento {
     display: inline-block;
-    margin-left: 20px;
     margin-top: 10px;
+    margin-right: 10px;
 }
 
 input#complemento {
@@ -168,10 +168,11 @@ div#divNumero {
     display: inline-block;
     margin-top: 10px;
     margin-left: 20px;
+    margin-right: 10px;
 }
 
 input#numero {
-    width: 175px;
+    width: 90px;
 }
 
 img#imgForm {

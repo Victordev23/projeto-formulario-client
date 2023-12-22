@@ -302,9 +302,9 @@ function validarBairro() {
     const regexRepetidas = /(.)\1{2}/
 
     if (bairro == '' || regexNumeros.test(bairro) || regexRepetidas.test(bairro)) {
-        setError(5)
+        setError(7)
     } else {
-        removeError(5)
+        removeError(7)
     }
 }
 
@@ -315,9 +315,9 @@ function validarCidade() {
     const regexRepetidas = /(.)\1{2}/
 
     if (cidade == '' || regexNumeros.test(cidade) || regexRepetidas.test(cidade)) {
-        setError(6)
+        setError(8)
     } else {
-        removeError(6)
+        removeError(8)
     }
 }
 
@@ -328,9 +328,9 @@ function validarUf() {
     const regexRepetidas = /(.)\1{2}/
 
     if (uf > 2 || uf == '' || regexNumeros.test(uf) || regexRepetidas.test(uf)) {
-        setError(7)
+        setError(9)
     } else {
-        removeError(7)
+        removeError(9)
     }
 }
 
@@ -341,9 +341,9 @@ function validarLog() {
     const regexRepetidas = /(.)\1{2}/
 
     if (log == '' || regexNumeros.test(log) || regexRepetidas.test(log)) {
-        setError(8)
+        setError(5)
     } else {
-        removeError(8)
+        removeError(5)
     }
 }
 
@@ -353,9 +353,9 @@ function validarNum() {
     const regexNumeros = /^\d+$/
 
     if (numero == '' || !regexNumeros.test(numero)) {
-        setError(9)
+        setError(6)
     } else {
-        removeError(9)
+        removeError(6)
     }
 }
 
