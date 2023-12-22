@@ -354,7 +354,7 @@ function validarNum() {
     const bordaNum = document.getElementById('numero')
     const regexNumeros = /^\d+$/
 
-     if (numero == '' || null) {
+    if (numero == '' || null) {
         numVazio.style.display = 'block'
         bordaNum.style.border = '1px solid #e63636';
     } else if (!regexNumeros.test(numero)) {
@@ -365,7 +365,6 @@ function validarNum() {
         removeError(6)
     }
 }
-
 
 const form = document.getElementById('form')
 
@@ -383,48 +382,54 @@ form.addEventListener('submit', function (event) {
     const numero = document.getElementById('numero').value
     let imgFile = document.getElementById('errorImg')
 
-    if (nome == '' || errorOccurred) {
-        validarNome()
 
-        event.preventDefault()
-    } else if (nascimento == '' || errorOccurred) {
+    validarNome()
+    validarLog()
+    validarBairro()
+    validarCidade()
+    validarUf()
+    validarEmail()
+    validarNum()
+    validarGenero()
+
+    if (nascimento == '' && documento == '' && cep == '') {
         setError(1)
-
-        event.preventDefault()
-    } else if (log == '' || errorOccurred) {
-        validarLog()
-
-        event.preventDefault()
-    } else if (bairro == '' || errorOccurred) {
-        validarBairro()
-
-        event.preventDefault()
-    } else if (cidade == '' || errorOccurred) {
-        validarCidade()
-
-        event.preventDefault()
-    } else if (uf == '' || errorOccurred) {
-        validarUf()
-
-        event.preventDefault()
-    } else if (email == '' || errorOccurred) {
-        validarEmail()
-
-        event.preventDefault()
-    } else if (documento == '' || errorOccurred) {
         setError(3)
-
-        event.preventDefault()
-    } else if (cep == '' || errorOccurred) {
         setError(4)
 
         event.preventDefault()
-    } else if (numero == '' || errorOccurred) {
-        validarNum()
+    } else if (documento == '' && cep == '') {
+        setError(3)
+        setError(4)
+
+        event.preventDefault()
+    } else if (cep == '' && nascimento == '') {
+        setError(1)
+        setError(4)
+
+        event.preventDefault()
+    } else if (nascimento == '' && documento == '') {
+        setError(1)
+        setError(3)
+
+        event.preventDefault()
+    } else if (nascimento == '') {
+        setError(1)
+
+        event.preventDefault()
+    } else if (documento == '') {
+        setError(3)
+
+        event.preventDefault()
+    } else if (cep == '') {
+        setError(4)
 
         event.preventDefault()
     } else if (document.getElementById("formFile").files.length == 0) {
         imgFile.style.display = 'block'
+
+        event.preventDefault()
+    } else if (errorOccurred) {
 
         event.preventDefault()
     }
