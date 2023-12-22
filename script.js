@@ -350,11 +350,18 @@ function validarLog() {
 //validação numero
 function validarNum() {
     const numero = document.getElementById('numero').value
+    const numVazio = document.getElementById('numVazio')
+    const bordaNum = document.getElementById('numero')
     const regexNumeros = /^\d+$/
 
-    if (numero == '' || !regexNumeros.test(numero)) {
+     if (numero == '' || null) {
+        numVazio.style.display = 'block'
+        bordaNum.style.border = '1px solid #e63636';
+    } else if (!regexNumeros.test(numero)) {
         setError(6)
     } else {
+        numVazio.style.display = 'none'
+        bordaNum.style.border = ''
         removeError(6)
     }
 }

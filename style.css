@@ -175,6 +175,12 @@ input#numero {
     width: 90px;
 }
 
+div#numVazio{
+    color: #e63636;
+    display: none;
+    font-size: 15px;
+}
+
 img#imgForm {
     margin-top: 10px;
     height: 200px;
