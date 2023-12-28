@@ -382,7 +382,6 @@ form.addEventListener('submit', function (event) {
     const numero = document.getElementById('numero').value
     let imgFile = document.getElementById('errorImg')
 
-
     validarNome()
     validarLog()
     validarBairro()

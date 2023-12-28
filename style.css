@@ -82,7 +82,6 @@ div#divNascimento {
 div#divEmail {
     display: inline-block;
     margin-top: 10px;
-    margin-bottom: 15px;
     margin-right: 20px;
 }
 
@@ -103,7 +102,6 @@ input#documento {
 div#divCep {
     display: inline-block;
     margin-top: 10px;
-    margin-bottom: 15px;
     clear: both;
     margin-right: 10px;
 }
