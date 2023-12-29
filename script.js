@@ -66,14 +66,11 @@ const divError = document.querySelectorAll('.divError')
 function setError(index) {
     campos[index].style.border = '1px solid #e63636';
     divError[index].style.display = 'block';
-    errorOccurred = true;
 }
 
 function removeError(index) {
     campos[index].style.border = '';
     divError[index].style.display = 'none';
-    errorOccurred = false;
-
 }
 
 //validação nome
@@ -84,10 +81,12 @@ function validarNome() {
 
     if (nome.length < 2 || nome == '' || regexNumeros.test(nome) || regexRepetidas.test(nome)) {
         setError(0)
+        return false
 
     } else {
         removeError(0)
-    }
+        return true
+   }
 }
 
 //validação genero
@@ -164,6 +163,7 @@ function inputSair() {
         return false
     } else {
         removeError(1)
+        return true
     }
 }
 dateInputMask(inputNascimento);
@@ -175,8 +175,10 @@ function validarEmail() {
 
     if (!regexEmail.test(email) || email == '' || email.length < 10) {
         setError(2)
+        return false
     } else {
         removeError(2)
+        return true
     }
 }
 
@@ -282,7 +284,7 @@ inputDoc.addEventListener("blur", () => {
 
         if (digito1 == docFormatado[12] && digito2 == docFormatado[13]) {
             removeError(3)
-
+            
             const maskCnpj = docFormatado.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5")
 
             inputDoc.value = maskCnpj
@@ -303,8 +305,10 @@ function validarBairro() {
 
     if (bairro == '' || regexNumeros.test(bairro) || regexRepetidas.test(bairro)) {
         setError(7)
+        return false
     } else {
         removeError(7)
+        return true
     }
 }
 
@@ -316,8 +320,10 @@ function validarCidade() {
 
     if (cidade == '' || regexNumeros.test(cidade) || regexRepetidas.test(cidade)) {
         setError(8)
+        return false
     } else {
         removeError(8)
+        return true
     }
 }
 
@@ -329,8 +335,10 @@ function validarUf() {
 
     if (uf > 2 || uf == '' || regexNumeros.test(uf) || regexRepetidas.test(uf)) {
         setError(9)
+        return false
     } else {
         removeError(9)
+        return true
     }
 }
 
@@ -342,8 +350,10 @@ function validarLog() {
 
     if (log == '' || regexNumeros.test(log) || regexRepetidas.test(log)) {
         setError(5)
+        return false
     } else {
         removeError(5)
+        return true
     }
 }
 
@@ -357,79 +367,42 @@ function validarNum() {
     if (numero == '' || null) {
         numVazio.style.display = 'block'
         bordaNum.style.border = '1px solid #e63636';
+        return false
     } else if (!regexNumeros.test(numero)) {
         setError(6)
+        return false
     } else {
         numVazio.style.display = 'none'
         bordaNum.style.border = ''
         removeError(6)
+        return true
     }
+}
+
+function formHasError() {
+    let hasError = false
+
+    const errorDivs = document.querySelectorAll('.divError')
+    for (i = 0; i < errorDivs.length; i++){
+        if (errorDivs[i].style.display == 'block') {
+            hasError = true
+            break
+        }
+    }
+
+    let imgFile = document.getElementById('errorImg')
+    if (document.getElementById("formFile").files.length == 0) {
+        imgFile.style.display = 'block'
+        hasError = true
+    }
+
+    return !validarGenero() || hasError
 }
 
 const form = document.getElementById('form')
 
 form.addEventListener('submit', function (event) {
-
-    const nome = document.getElementById('nome').value
-    const log = document.getElementById('logradouro').value
-    const bairro = document.getElementById('bairro').value
-    const cidade = document.getElementById('cidade').value
-    const uf = document.getElementById('uf').value
-    const nascimento = document.getElementById('nascimento').value
-    const email = document.getElementById('email').value
-    const documento = document.getElementById('documento').value
-    const cep = document.getElementById('cep').value
-    const numero = document.getElementById('numero').value
-    let imgFile = document.getElementById('errorImg')
-
-    validarNome()
-    validarLog()
-    validarBairro()
-    validarCidade()
-    validarUf()
-    validarEmail()
-    validarNum()
-    validarGenero()
-
-    if (nascimento == '' && documento == '' && cep == '') {
-        setError(1)
-        setError(3)
-        setError(4)
-
-        event.preventDefault()
-    } else if (documento == '' && cep == '') {
-        setError(3)
-        setError(4)
-
-        event.preventDefault()
-    } else if (cep == '' && nascimento == '') {
-        setError(1)
-        setError(4)
-
-        event.preventDefault()
-    } else if (nascimento == '' && documento == '') {
-        setError(1)
-        setError(3)
-
-        event.preventDefault()
-    } else if (nascimento == '') {
-        setError(1)
-
-        event.preventDefault()
-    } else if (documento == '') {
-        setError(3)
-
-        event.preventDefault()
-    } else if (cep == '') {
-        setError(4)
-
-        event.preventDefault()
-    } else if (document.getElementById("formFile").files.length == 0) {
-        imgFile.style.display = 'block'
-
-        event.preventDefault()
-    } else if (errorOccurred) {
-
+    if (formHasError()) {
         event.preventDefault()
     }
 });
