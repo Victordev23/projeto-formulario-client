@@ -85,7 +85,6 @@ function validarNome() {
 
     } else {
         removeError(0)
-        return true
     }
 }
 
@@ -284,7 +283,7 @@ inputDoc.addEventListener("blur", () => {
 
         if (digito1 == docFormatado[12] && digito2 == docFormatado[13]) {
             removeError(3)
-
+            
             const maskCnpj = docFormatado.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5")
 
             inputDoc.value = maskCnpj
@@ -377,36 +376,6 @@ function validarNum() {
         removeError(6)
         return true
     }
-}
-
-function formHasError() {
-    let hasError = false
-
-    const inputs = document.querySelectorAll('input')
-    for (i = 0; i < 10; i++) {
-        if (inputs[i].value == '' || inputs[i].value == null) {
-            hasError = true
-            setError(i)
-        }
-    }
-
-    const errorDivs = document.querySelectorAll('.divError')
-    for (i = 0; i < errorDivs.length; i++) {
-        if (errorDivs[i].style.display == 'block') {
-            hasError = true
-            break
-        }
-    }
-
-    let imgFile = document.getElementById('errorImg')
-    if (document.getElementById("formFile").files.length == 0) {
-        imgFile.style.display = 'block'
-        hasError = true
-    } else {
-        imgFile.style.display = 'none'
-    }
-
-    return !validarGenero() || hasError
 }
 
 const form = document.getElementById('form')
