@@ -283,7 +283,7 @@ inputDoc.addEventListener("blur", () => {
 
         if (digito1 == docFormatado[12] && digito2 == docFormatado[13]) {
             removeError(3)
-
+            
             const maskCnpj = docFormatado.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, "$1.$2.$3/$4-$5")
 
             inputDoc.value = maskCnpj
