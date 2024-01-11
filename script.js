@@ -381,7 +381,7 @@ function validarNum() {
 function formHasError() {
     let hasError = false
 
-    const inputs = document.querySelectorAll('input')
+    const inputs = document.querySelectorAll('.required')
     for (i = 0; i < 10; i++) {
         if (inputs[i].value == '' || inputs[i].value == null) {
             hasError = true
