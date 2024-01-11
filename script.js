@@ -104,9 +104,7 @@ function validarGenero() {
     }
 }
 
-//mask e validação data de nascimento 
-
-
+//mask e validação data de nascimento
 let inputNascimento = document.getElementById('nascimento')
 
 const dateInputMask = function dateInputMask(inputNascimento) {
@@ -130,10 +128,6 @@ const dateInputMask = function dateInputMask(inputNascimento) {
         if (length === 5) {
             inputNascimento.value += '/';
         }
-
-        inputNascimento.addEventListener('blur', function () {
-            inputSair();
-        });
     });
 };
 
